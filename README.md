@@ -285,6 +285,8 @@ specify the following:
 
 This is the device name for mDNS discovery service. It defaults to `Nerves Gadget`.
 
+Your device will be discovered as "Nerves Gadget (nerves)". There is a domain name in parenthesis.
+
 ### `:mdns_domain`
 
 This is the mDNS name for finding the device. It defaults to `nerves.local`.
