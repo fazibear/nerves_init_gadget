@@ -213,7 +213,7 @@ defmodule Nerves.InitGadget.NetworkManager do
   defp resolve_mdns_name(mdns_name), do: mdns_name
 
   defp mdns_discovery_name(opts) do
-    "#{opts.mdns_name} (#{resolve_mdns_name(opts.mdns_domain)})"
+    String.replace("#{opts.mdns_name} (#{resolve_mdns_name(opts.mdns_domain)})", ".", "-")
   end
 
   defp to_atom(value) when is_atom(value), do: value
