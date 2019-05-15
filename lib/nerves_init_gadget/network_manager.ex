@@ -142,6 +142,12 @@ defmodule Nerves.InitGadget.NetworkManager do
 
       # ssh service
       %Mdns.Server.Service{
+        domain: "_services._dns-sd._udp.local",
+        data: "_ssh._tcp.local",
+        ttl: opts.mdns_ttl,
+        type: :ptr
+      },
+      %Mdns.Server.Service{
         domain: "_ssh._tcp.local",
         data: "#{mdns_discovery_name(opts)}._ssh._tcp.local",
         ttl: opts.mdns_ttl,
@@ -166,6 +172,12 @@ defmodule Nerves.InitGadget.NetworkManager do
       },
 
       # sftp service
+      %Mdns.Server.Service{
+        domain: "_services._dns-sd._udp.local",
+        data: "_sftp-ssh._tcp.local",
+        ttl: opts.mdns_ttl,
+        type: :ptr
+      },
       %Mdns.Server.Service{
         domain: "_sftp-ssh._tcp.local",
         data: "#{mdns_discovery_name(opts)}._sftp-ssh._tcp.local",
