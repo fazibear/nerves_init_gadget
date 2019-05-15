@@ -140,14 +140,6 @@ defmodule Nerves.InitGadget.NetworkManager do
         type: :a
       },
 
-      # make it discoverable
-      %Mdns.Server.Service{
-        domain: "_services._dns-sd._udp.local",
-        data: "#{mdns_discovery_name(opts)}._services._dns-sd._udp.local",
-        ttl: opts.mdns_ttl,
-        type: :ptr
-      },
-
       # ssh service
       %Mdns.Server.Service{
         domain: "_ssh._tcp.local",
