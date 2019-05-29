@@ -42,7 +42,7 @@ defmodule Nerves.InitGadget.MixProject do
       {:nerves_network, "~> 0.3"},
       {:nerves_firmware_ssh, "~> 0.2"},
       {:nerves_time, "~> 0.2"},
-      {:mdns, "~> 1.0"},
+      {:mdns, github: "fazibear/mdns", branch: "a_record"},
       {:ring_logger, "~> 0.4"},
       {:one_dhcpd, "~> 0.1"},
       {:ex_doc, "~> 0.19", only: [:dev, :test], runtime: false}
