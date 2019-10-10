@@ -16,10 +16,6 @@ defmodule Nerves.InitGadget.SSHConsole do
     {:ok, %{ssh: ssh, opts: opts}}
   end
 
-  def terminate(_, %{ssh: ssh}) do
-    :ssh.stop_daemon(ssh)
-  end
-
   defp start_ssh(%{ssh_console_port: port}) do
     # Reuse keys from `nerves_firmware_ssh` so that the user only needs one
     # config.exs entry.
@@ -46,6 +42,7 @@ defmodule Nerves.InitGadget.SSHConsole do
         {:subsystems, [:ssh_sftpd.subsystem_spec(cwd: '/')]}
       ])
 
+    Process.link(ssh)
     ssh
   end
 

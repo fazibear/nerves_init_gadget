@@ -1,7 +1,7 @@
 defmodule Nerves.InitGadget.MixProject do
   use Mix.Project
 
-  @version "0.6.0"
+  @version "0.7.0"
 
   @description """
   Simple initialization for devices running Nerves
@@ -15,6 +15,7 @@ defmodule Nerves.InitGadget.MixProject do
       package: package(),
       elixir: "~> 1.6",
       docs: docs(),
+      dialyzer: dialyzer(),
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
@@ -45,7 +46,15 @@ defmodule Nerves.InitGadget.MixProject do
       {:mdns, github: "fazibear/mdns", branch: "a_record"},
       {:ring_logger, "~> 0.4"},
       {:one_dhcpd, "~> 0.1"},
-      {:ex_doc, "~> 0.19", only: [:dev, :test], runtime: false}
+      {:ex_doc, "~> 0.19", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.0.0-rc.6", only: :dev, runtime: false}
+    ]
+  end
+
+  defp dialyzer() do
+    [
+      flags: [:race_conditions, :error_handling],
+      ignore_warnings: ".dialyzer_ignore.exs"
     ]
   end
 end
